@@ -1,32 +1,36 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 
 const Form = (props) => {
-  const [name, setName] = useState("");
-  const [gmail, setGmail] = useState("");
-  const [address, setAddress] = useState("");
+  // const [name, setName] = useState("");
+  // const [gmail, setGmail] = useState("");
+  // const [address, setAddress] = useState("");
 
-  const trackName = (event) => {
-    setName(event.target.value);
-  };
+  const nameInputRef = useRef();
+  const gmailInputRef = useRef();
+  const addressInputRef = useRef();
 
-  const trackGmail = (event) => {
-    setGmail(event.target.value);
-  };
+  // const trackName = (event) => {
+  //   setName(event.target.value);
+  // };
 
-  const trackAddress = (event) => {
-    setAddress(event.target.value);
-  };
+  // const trackGmail = (event) => {
+  //   setGmail(event.target.value);
+  // };
+
+  // const trackAddress = (event) => {
+  //   setAddress(event.target.value);
+  // };
 
   const addData = (event) => {
     
     event.preventDefault();
 
     const data = {
-        name,
-        gmail,
-        address,
+      name : nameInputRef,
+      gmail : gmailInputRef,
+      address : addressInputRef,
     }
 
     console.log('Data was Sent');
@@ -40,21 +44,24 @@ const Form = (props) => {
           name="name"
           type="text"
           placeholder="Enter your Name Here"
-          onChange={trackName}
+          //onChange={trackName}
+          ref={nameInputRef}
         />
 
         <input
           name="gmail"
           type="text"
           placeholder="Enter your Gmail Here"
-          onChange={trackGmail}
+          //onChange={trackGmail}
+          ref={gmailInputRef}
         />
 
         <input
           name="address"
           type="text"
           placeholder="Enter your Address Here"
-          onChange={trackAddress}
+          //onChange={trackAddress}
+          ref={addressInputRef}
         />
 
         <button>Add New Info</button>

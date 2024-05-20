@@ -9,18 +9,21 @@ function App() {
   const [members, setMember] = useState([]);
 
   const addNewMember = (memberInfo) => {
+    const name = memberInfo.name.current.value.trim();
+    const gmail = memberInfo.gmail.current.value.trim();
+    const address = memberInfo.address.current.value.trim();
 
-    if(memberInfo.name.trim().length === 0 ||
-     memberInfo.gmail.trim().length === 0 ||
-      memberInfo.address.trim().length === 0){
-      
-        alert("Data is incomplete");
-      }
-      else{
-        setMember([...members, memberInfo]);
-
-      }
+    if (name.length === 0 || gmail.length === 0 || address.length === 0) {
+      alert("Data is incomplete");
+    } else {
+      const newMember = {
+        name,
+        gmail,
+        address,
+      };
+      setMember([...members, newMember]);
     }
+  };
         
 
   let promptData = <p>There is no member rightNow!</p>;
